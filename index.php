@@ -99,6 +99,10 @@ if (isset($_SESSION['username'])) { ?>
 
             body {
                 background-image: url("bg2.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: center;
             }
         </style>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -107,7 +111,7 @@ if (isset($_SESSION['username'])) { ?>
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar navbar-expand-lg bg-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -125,12 +129,8 @@ if (isset($_SESSION['username'])) { ?>
         </nav>
         <div class="container-fluid">
             <center>
-
-
                 <h1 class="text-light">Mensagens</h1>
-
-                <div class="col-xl-6 col-lg-6 col-md-9 mb-2" style="overflow-y: scroll; height:400px;" id="chat-messages"></div>
-
+                <div class="col-xl-6 col-lg-6 col-md-9 mb-2 bg-light" style="overflow-y: scroll; height:400px;" id="chat-messages"></div>
                 <form id="chat-form">
                     <div class="col-xl-3 col-lg-6 col-md-9 col-sm-12 mb-2 ml-2 mr-2">
                         <input type="text" class="form-control" id="chat-message" placeholder="Escreva algo aqui...">
@@ -143,7 +143,6 @@ if (isset($_SESSION['username'])) { ?>
             </center>
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
         <script>
             function clearconsole() {
                 console.log(window.console);
@@ -172,22 +171,19 @@ if (isset($_SESSION['username'])) { ?>
                         url: 'chat.php',
                         type: 'GET',
                         success: function(data) {
-                            console.log(data);
                             $('#chat-messages').html(data);
                         }
                     });
                     var myscroll = $("#chat-messages");
                     myscroll.scrollTop(myscroll.get(0).scrollHeight);
                     clearconsole();
-                }, 1000);
+                }, 2000);
 
 
             });
         </script>
     </body>
-
     </html>
-
 <?php } else {
     header("Location: login.php");
 } ?>
